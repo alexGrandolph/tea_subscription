@@ -10,7 +10,7 @@ RSpec.describe Customer, type: :model do
     it { should validate_uniqueness_of(:email) }
   end 
 
-  describe "Relationship" do
+  describe "Relationships" do
 
     it { should have_many(:subscriptions) }
     it { should have_many(:teas).through(:subscriptions) }
