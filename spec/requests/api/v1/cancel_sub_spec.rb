@@ -12,7 +12,7 @@ RSpec.describe 'Cancel Customer Subscription Endpoint' do
         cancel: true
       }
    
-      post '/api/v1/subscriptions/cancel', headers: headers, params: JSON.generate(payload)
+      post '/api/v1/subscriptions/cancel', headers: headers, params:{ subscription_id: subscription.id, cancel: true }
 
       expect(response).to be_successful
 
