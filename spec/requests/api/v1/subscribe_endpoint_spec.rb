@@ -20,12 +20,13 @@ RSpec.describe 'Subscribe User Endpoint' do
       }
    
       post '/api/v1/subscribe', headers: headers, params: JSON.generate(payload)
-      
-      response = JSON.parse(response.body, symbolize_names: true)
       expect(response).to be_successful
-      expect(response).to have key(:data)
-      expect(response[:data]).to be_a Hash
-      data = response[:data]
+      expect(response.status).to eq 201
+      result = JSON.parse(response.body, symbolize_names: true)
+      # binding.pry
+      expect(result).to have_key(:data)
+      expect(result[:data]).to be_a Hash
+      data = result[:data]
 
     end
 

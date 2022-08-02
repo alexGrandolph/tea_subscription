@@ -1,4 +1,4 @@
-class Api::V1::CustomersController < ApplicationController
+class Api::V1::SubscriptionsController < ApplicationController
 
   def create
     customer = Customer.find(params[:customer_id])
@@ -6,8 +6,8 @@ class Api::V1::CustomersController < ApplicationController
     subscription = Subscription.create(title: '', price: params[:price], status: params[:status], frequency: params[:frequency], customer_id: params[:customer_id], tea_id: params[:tea_id])
     subscription.update(title: "#{subscription.frequency} #{tea.title}")
     subscription.save
-
-    binding.pry
+    # render json: SubscriptionSerializer.create_subscription(subscription, customer, tea), status: 201
+    render json: SubscriptionSerializer.new(subscription), status: 201
   end 
 
 
