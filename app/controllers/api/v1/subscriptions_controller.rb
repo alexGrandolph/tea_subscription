@@ -10,4 +10,9 @@ class Api::V1::SubscriptionsController < ApplicationController
     # render json: SubscriptionSerializer.create_subscription(subscription, customer, tea), status: 201
   end 
 
+  def update
+    binding.pry
+
+  end 
+
 end 
