@@ -2,6 +2,7 @@ class SubscriptionSerializer
   include JSONAPI::Serializer
   attributes :title, :price, :status, :frequency, :customer_id, :tea_id, :updated_at, :created_at
   
+end 
   
   
   
@@ -10,7 +11,6 @@ class SubscriptionSerializer
   
   
   # def self.create_subscription(subscription, customer, tea)
-  #   # binding.pry
   #   {
   #     "data": {
   #       "type": "Subscription",
@@ -37,5 +37,3 @@ class SubscriptionSerializer
   #   }
   # end 
 
-
-end 

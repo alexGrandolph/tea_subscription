@@ -13,7 +13,6 @@ RSpec.describe 'Subscribe User Endpoint' do
       payload = {
         customer_id: customer1.id,
         tea_id: tea1.id,
-        title: 'Monthly Early Grey',
         price: 45.50,
         frequency: 1,
         status: 0
@@ -22,11 +21,37 @@ RSpec.describe 'Subscribe User Endpoint' do
       post '/api/v1/subscribe', headers: headers, params: JSON.generate(payload)
       expect(response).to be_successful
       expect(response.status).to eq 201
+      
       result = JSON.parse(response.body, symbolize_names: true)
-      # binding.pry
       expect(result).to have_key(:data)
       expect(result[:data]).to be_a Hash
+      
       data = result[:data]
+      expect(data).to have_key(:id)
+      expect(data[:id]).to be_a String
+
+      expect(data).to have_key(:type)
+      expect(data[:type]).to be_a String
+      expect(data[:type]).to eq("subscription")
+
+      expect(data).to have_key(:attributes)
+      expect(data[:attributes]).to be_a Hash
+
+      attributes = data[:attributes]
+      expect(attributes).to have_key(:title)
+      expect(attributes[:title]).to be_a String
+
+      expect(attributes).to have_key(:price)
+      expect(attributes[:price]).to be_a Float
+
+      expect(attributes).to have_key(:status)
+      expect(attributes[:status]).to eq("Active")
+
+      expect(attributes).to have_key(:frequency)
+      expect(attributes[:frequency]).to eq("Monthly")
+
+      expect(attributes[:customer_id]).to eq(customer1.id)
+      expect(attributes[:tea_id]).to eq(tea1.id)
 
     end
 
