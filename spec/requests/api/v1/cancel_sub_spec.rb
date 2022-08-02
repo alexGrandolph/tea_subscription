@@ -27,7 +27,10 @@ RSpec.describe 'Cancel Customer Subscription Endpoint' do
       expect(data).to have_key(:type)
       expect(data[:type]).to be_a String
       expect(data[:type]).to eq("subscription")
-
+      
+      attributes = data[:attributes]
+      expect(attributes).to have_key(:status)
+      expect(attributes[:status]).to eq("Cancelled")
 
     end
   end
