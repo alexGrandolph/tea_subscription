@@ -15,7 +15,8 @@ RSpec.describe 'Subscribe User Endpoint' do
         tea_id: tea1.id,
         title: 'Monthly Early Grey',
         price: 45.50,
-        frequency: 2
+        frequency: 1,
+        status: 0
       }
    
       post '/api/v1/subscribe', headers: headers, params: JSON.generate(payload)
