@@ -100,21 +100,5 @@ Example Request
     }
 ```
 Response
-```
-  {
-      "data": {
-          "id": "3",
-          "type": "subscription",
-          "attributes": {
-              "title": "Weekly Hibiscus",
-              "price": 49.98,
-              "status": "Cancelled",
-              "frequency": "Weekly",
-              "customer_id": 3,
-              "tea_id": 6,
-              "updated_at": "2022-08-03T16:13:03.620Z",
-              "created_at": "2022-08-03T16:13:03.620Z"
-          }
-      }
-  }
-```
+![Screen Shot 2022-08-03 at 10 53 47 AM](https://user-images.githubusercontent.com/96802470/182665431-431900d7-cc80-481c-a8cd-41503061bdc0.png)
+
