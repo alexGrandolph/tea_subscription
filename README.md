@@ -16,8 +16,7 @@ To run the test suite yourself, simply run `bundle exec rspec` in your CLI.
 
 
 <h4>Create a Tea Subscription for a Customer</h4>
-Parameters are sent via request body to improve security. 
-*Headers, Route, and Request Body.*
+Parameters are sent via request body to improve security. <br>
 Example Request
 
 ```
@@ -34,7 +33,7 @@ Example Request
       "status": 0
     }
 ```
-
+Response
 ```
 {
     "data": {
@@ -49,6 +48,40 @@ Example Request
             "tea_id": 5,
             "updated_at": "2022-08-03T16:26:17.501Z",
             "created_at": "2022-08-03T16:26:17.501Z"
+        }
+    }
+}
+```
+<br>
+<h4>Cancel a Tea Subscription for a Customer</h4>
+Example Request
+
+```
+  POST /api/v1/subscriptions/cancel
+  Content-Type: application/json
+  Accept: application/json
+  
+  body:
+    {
+      "subscription_id": 2,
+      "cancel": "true"
+    }
+```
+Response
+```
+{
+    "data": {
+        "id": "3",
+        "type": "subscription",
+        "attributes": {
+            "title": "Weekly Hibiscus",
+            "price": 49.98,
+            "status": "Cancelled",
+            "frequency": "Weekly",
+            "customer_id": 3,
+            "tea_id": 6,
+            "updated_at": "2022-08-03T16:13:03.620Z",
+            "created_at": "2022-08-03T16:13:03.620Z"
         }
     }
 }
