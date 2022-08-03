@@ -15,3 +15,11 @@ To run the test suite yourself, simply run ```bundle exec rspec``` in your CLI.
 Currently, this project offers three endpoints.
 
 <h4>Create a Tea Subscription for a Customer</h4>
+Ensure that you have the following headers<br>
+```
+Content-Type: application/json 
+```
+<br>
+``` 
+Accept: application/json
+```
