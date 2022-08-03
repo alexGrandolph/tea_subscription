@@ -101,3 +101,5 @@ Example Request
     }
 ```
 
+![Screen Shot 2022-08-03 at 10 53 47 AM](https://user-images.githubusercontent.com/96802470/182665966-406c5cd8-1960-4bce-bcef-5c9e4b9cbd72.png)
+
