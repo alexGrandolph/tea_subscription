@@ -6,20 +6,50 @@ This Rails API offers three RESTful endpoints to a prospective front end, design
 
 <h3>Set Up Instructions</h3>
 <div align="left">
-To set up this repository on your local machine, please make sure you have Ruby version 2.7.4 and Rails 5.2.8 downloaded locally.  Next clone this repository to your local machine.  CD into the directory and run `bundle install` to install all gems and dependencies.  To launch a local server to ping the available endpoints via Postman or another API tool, enter ```rails s``` in your CLI. 
+To set up this repository on your local machine, please make sure you have Ruby version 2.7.4 and Rails 5.2.8 downloaded locally.  Next clone this repository to your local machine.  CD into the directory and run `bundle install` to install all gems and dependencies.  To launch a local server to ping the available endpoints via Postman or another API tool, enter `rails s` in your CLI. 
 <h4>Testing Instructins</h4>
 This project uses RSpec (rspec-rails gem) for its test suite, and SimpleCov for coverage.  This project has 99% test coverage.
 <br>
 To run the test suite yourself, simply run `bundle exec rspec` in your CLI.
 </div>
 <h3>Available Endpoints</h3>
-Currently, this project offers three endpoints.
+
 
 <h4>Create a Tea Subscription for a Customer</h4>
+Parameters are sent via request body to improve security. 
+*Headers, Route, and Request Body.*
+Example Request
+
 ```
-GET /api/v1/forecast?location=denver,co
-Content-Type: application/json
-Accept: application/json
+  POST /api/v1/subscribe
+  Content-Type: application/json
+  Accept: application/json
+  
+  body:
+    {
+      "customer_id": 3,
+      "tea_id": 5,
+      "price": 45.50,
+      "frequency": 1,
+      "status": 0
+    }
 ```
 
-  
+```
+{
+    "data": {
+        "id": "7",
+        "type": "subscription",
+        "attributes": {
+            "title": "Monthly Green Tea",
+            "price": 45.5,
+            "status": "Active",
+            "frequency": "Monthly",
+            "customer_id": 3,
+            "tea_id": 5,
+            "updated_at": "2022-08-03T16:26:17.501Z",
+            "created_at": "2022-08-03T16:26:17.501Z"
+        }
+    }
+}
+```
