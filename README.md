@@ -86,3 +86,35 @@ Response
     }
 }
 ```
+<br>
+<h4>Return All of a Customers Subscriptions (Active and Cancelled)</h4>
+Example Request
+```
+  GET /api/v1/customer/subscriptions
+  Content-Type: application/json
+  Accept: application/json
+  
+  body:
+    {
+      "customer_id": 6
+    }
+```
+Response
+```
+  {
+      "data": {
+          "id": "3",
+          "type": "subscription",
+          "attributes": {
+              "title": "Weekly Hibiscus",
+              "price": 49.98,
+              "status": "Cancelled",
+              "frequency": "Weekly",
+              "customer_id": 3,
+              "tea_id": 6,
+              "updated_at": "2022-08-03T16:13:03.620Z",
+              "created_at": "2022-08-03T16:13:03.620Z"
+          }
+      }
+  }
+```
