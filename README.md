@@ -89,6 +89,7 @@ Response
 <br>
 <h4>Return All of a Customers Subscriptions (Active and Cancelled)</h4>
 Example Request
+
 ```
   GET /api/v1/customer/subscriptions
   Content-Type: application/json
