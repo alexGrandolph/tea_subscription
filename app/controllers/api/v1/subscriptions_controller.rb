@@ -10,4 +10,17 @@ class Api::V1::SubscriptionsController < ApplicationController
     # render json: SubscriptionSerializer.create_subscription(subscription, customer, tea), status: 201
   end 
 
+  def update
+
+    if params[:cancel] == 'true'
+      subscription = Subscription.find(params[:subscription_id])
+      subscription.update(status: 1)
+      subscription.save
+      render json: SubscriptionSerializer.new(subscription)
+
+    else
+    end
+
+  end 
+
 end 
