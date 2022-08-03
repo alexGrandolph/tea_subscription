@@ -18,6 +18,27 @@ RSpec.describe 'Get All Customer Subscriptions Endpoint' do
       result = JSON.parse(response.body, symbolize_names: true)
       expect(result).to have_key(:data)
       expect(result[:data]).to be_a Hash
+      data = result[:data]
+      
+      expect(data).to have_key(:id)
+      expect(data[:id].to_i).to eq(customer1.id)
+
+      expect(data).to have_key(:type)
+      expect(data[:type]).to eq("customer")
+
+      expect(data).to have_key(:attributes)
+      expect(data[:attributes]).to be_a Hash
+      attributes = data[:attributes]
+
+      expect(attributes).to have_key(:first_name)
+      expect(attributes).to have_key(:last_name)
+      expect(attributes).to have_key(:email)
+      expect(attributes).to have_key(:address)
+      expect(attributes).to have_key(:subscriptions)
+      
+      subscriptions = attributes[:subscriptions]
+      expect(subscriptions.count).to eq(3)
+
     end
 
 
