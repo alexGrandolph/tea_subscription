@@ -26,6 +26,7 @@ class Api::V1::Customers::SubscriptionsController < ApplicationController
       subscription = Subscription.find(params[:subscription_id])
       subscription.update(status: 1)
       subscription.save
+      # binding.pry
       render json: SubscriptionSerializer.new(subscription)
     else
     end
