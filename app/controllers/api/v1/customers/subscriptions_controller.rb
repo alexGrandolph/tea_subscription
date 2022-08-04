@@ -22,14 +22,17 @@ class Api::V1::Customers::SubscriptionsController < ApplicationController
   end 
 
   def update
-    if params[:cancel] == 'true'
-      subscription = Subscription.find(params[:subscription_id])
-      subscription.update(status: 1)
-      subscription.save
-      # binding.pry
-      render json: SubscriptionSerializer.new(subscription)
-    else
-    end
+    begin
+      if params[:cancel] == 'true'
+        subscription = Subscription.find(params[:subscription_id])
+        subscription.update(status: 1)
+        subscription.save
+        render json: SubscriptionSerializer.new(subscription)
+      else
+      end
+    rescue ActiveRecord::RecordNotFound
+      render json: ErrorSerializer.bad_subscription_id
+    end 
   end 
 
 end

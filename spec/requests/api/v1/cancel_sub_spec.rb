@@ -7,10 +7,6 @@ RSpec.describe 'Cancel Customer Subscription Endpoint' do
       customer1 = Customer.create!(first_name: 'John', last_name: 'Brisket', email: 'john@example.com', address: '123 Fake Street')
       tea1 = Tea.create!(title: 'Earl Grey', description: 'A tasty tea for sure', temp: 55, brewtime: '5')
       subscription = Subscription.create!(title: 'Weekly Early Grey', price: 49.98, status: 0, frequency: 0, customer_id: customer1.id, tea_id: tea1.id)
-      payload = {
-        subscription_id: subscription.id,
-        cancel: true
-      }
    
       post '/api/v1/subscriptions/cancel', headers: headers, params:{ subscription_id: subscription.id, cancel: true }
 
@@ -37,14 +33,10 @@ RSpec.describe 'Cancel Customer Subscription Endpoint' do
   describe 'Sad Path' do
     it 'Bad Subscription ID returns error' do
       customer1 = Customer.create!(first_name: 'John', last_name: 'Brisket', email: 'john@example.com', address: '123 Fake Street')
-      tea1 = Tea.create!(title: 'Earl Grey', description: 'A tasty tea for sure', temp: 55, brewtime: '5')
-      subscription = Subscription.create!(title: 'Weekly Early Grey', price: 49.98, status: 0, frequency: 0, customer_id: customer1.id, tea_id: tea1.id)
-      payload = {
-        subscription_id: 888,
-        cancel: true
-      }
-   
-      post '/api/v1/subscriptions/cancel', headers: headers, params:{ subscription_id: subscription.id, cancel: true }
+      tea1 = Tea.create!(title: 'Some Tea', description: 'A tasty tea for sure', temp: 55, brewtime: '5')
+      subscription = Subscription.create!(title: 'Weekly Tea', price: 49.98, status: 0, frequency: 0, customer_id: customer1.id, tea_id: tea1.id)
+
+      post '/api/v1/subscriptions/cancel', headers: headers, params:{ subscription_id: 888, cancel: true }
 
       expect(response).to be_successful
 
@@ -58,8 +50,7 @@ RSpec.describe 'Cancel Customer Subscription Endpoint' do
 
       expect(result[:data]).to have_key(:attributes)
       expect(result[:data][:attributes]).to have_key(:message)
-      expect(result[:data][:attributes][:message]).to eq("Unable to cancel subscription")
-
+      expect(result[:data][:attributes][:message]).to eq("Unable to find a subscription with given ID")
 
     end 
 
