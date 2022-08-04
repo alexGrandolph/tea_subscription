@@ -59,9 +59,7 @@ RSpec.describe 'Subscribe User Endpoint' do
 
     it 'Bad customer ID returns an error' do
       customer1 = Customer.create!(first_name: 'John', last_name: 'Brisket', email: 'john@example.com', address: '123 Fake Street')
-
       tea1 = Tea.create!(title: 'Earl Grey', description: 'A tasty tea for sure', temp: 55, brewtime: '5')
-      tea2 = Tea.create!(title: 'Green Tea', description: 'A tea that is green', temp: 62, brewtime: '2')
       headers = { 'CONTENT_TYPE' => 'application/json', "Accept" => 'application/json' }
       payload = {
         customer_id: 666,
@@ -85,8 +83,36 @@ RSpec.describe 'Subscribe User Endpoint' do
       expect(result[:data]).to have_key(:attributes)
       expect(result[:data][:attributes]).to have_key(:message)
       expect(result[:data][:attributes][:message]).to eq("Missing parameters to create a subscription")
-    
-    
+  
+    end
+
+    it 'Bad tea ID returns an error' do
+      customer1 = Customer.create!(first_name: 'John', last_name: 'Brisket', email: 'john@example.com', address: '123 Fake Street')
+      tea1 = Tea.create!(title: 'Earl Grey', description: 'A tasty tea for sure', temp: 55, brewtime: '5')
+      headers = { 'CONTENT_TYPE' => 'application/json', "Accept" => 'application/json' }
+      payload = {
+        customer_id: customer1.id,
+        tea_id: 8888,
+        price: 45.50,
+        frequency: 1,
+        status: 0
+      }
+   
+      post '/api/v1/subscribe', headers: headers, params: JSON.generate(payload)
+      expect(response).to be_successful
+      
+      result = JSON.parse(response.body, symbolize_names: true)
+      expect(result).to have_key(:data)
+      expect(result[:data]).to be_a Hash
+      
+      data = result[:data]
+      expect(data).to have_key(:type)
+      expect(data[:type]).to eq("Error")
+
+      expect(result[:data]).to have_key(:attributes)
+      expect(result[:data][:attributes]).to have_key(:message)
+      expect(result[:data][:attributes][:message]).to eq("Missing parameters to create a subscription")
+  
     end
 
 
