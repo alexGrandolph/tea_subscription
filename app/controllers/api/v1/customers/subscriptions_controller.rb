@@ -7,16 +7,18 @@ class Api::V1::Customers::SubscriptionsController < ApplicationController
 
 
   def create
-    tea = Tea.find(params[:tea_id])
-    subscription = Subscription.create(price: params[:price], status: params[:status], frequency: params[:frequency], customer_id: params[:customer_id], tea_id: params[:tea_id])
-    subscription.update(title: "#{subscription.frequency} #{tea.title}")
-    if subscription.save
-      render json: SubscriptionSerializer.new(subscription), status: 201
-    else
+    begin
+      tea = Tea.find(params[:tea_id])
+      subscription = Subscription.create(price: params[:price], status: params[:status], frequency: params[:frequency], customer_id: params[:customer_id], tea_id: params[:tea_id])
+      subscription.update(title: "#{subscription.frequency} #{subscription.tea.title}")
+      if subscription.save
+        render json: SubscriptionSerializer.new(subscription), status: 201
+      else
+        render json: ErrorSerializer.bad_subscription
+      end
+    rescue ActiveRecord::RecordNotFound
       render json: ErrorSerializer.bad_subscription
-      # binding.pry
     end
-
   end 
 
   def update
