@@ -73,7 +73,7 @@ RSpec.describe 'Cancel Customer Subscription Endpoint' do
 
       expect(result[:data]).to have_key(:attributes)
       expect(result[:data][:attributes]).to have_key(:message)
-      expect(result[:data][:attributes][:message]).to eq("Please include cancel: true to parameters to cancel this subscription")
+      expect(result[:data][:attributes][:message]).to eq("Request is missing required parameters")
 
     end 
 

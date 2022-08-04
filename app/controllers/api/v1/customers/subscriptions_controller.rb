@@ -29,6 +29,7 @@ class Api::V1::Customers::SubscriptionsController < ApplicationController
         subscription.save
         render json: SubscriptionSerializer.new(subscription)
       else
+        render json: ErrorSerializer.missing_parameters
       end
     rescue ActiveRecord::RecordNotFound
       render json: ErrorSerializer.bad_subscription_id

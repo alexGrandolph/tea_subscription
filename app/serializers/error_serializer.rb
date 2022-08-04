@@ -24,4 +24,16 @@ class ErrorSerializer
    }
   end
 
+  def self.missing_parameters
+   {
+      "data": {
+        "type": "Error",
+        "id": "nil",
+        "attributes": {
+          "message": "Request is missing required parameters"
+        }
+      }
+   }
+  end
+
 end
