@@ -52,13 +52,35 @@ RSpec.describe 'Subscribe User Endpoint' do
 
       expect(attributes[:customer_id]).to eq(customer1.id)
       expect(attributes[:tea_id]).to eq(tea1.id)
+    end
+  end 
+  
+  describe 'Sad Path' do
 
+    it 'Bad customer ID returns an error' do
+      customer1 = Customer.create!(first_name: 'John', last_name: 'Brisket', email: 'john@example.com', address: '123 Fake Street')
+
+      tea1 = Tea.create!(title: 'Earl Grey', description: 'A tasty tea for sure', temp: 55, brewtime: '5')
+      tea2 = Tea.create!(title: 'Green Tea', description: 'A tea that is green', temp: 62, brewtime: '2')
+      headers = { 'CONTENT_TYPE' => 'application/json', "Accept" => 'application/json' }
+      payload = {
+        customer_id: 666,
+        tea_id: tea1.id,
+        price: 45.50,
+        frequency: 1,
+        status: 0
+      }
+   
+      post '/api/v1/subscribe', headers: headers, params: JSON.generate(payload)
+      expect(response).to be_successful
+      expect(response.status).to eq 201
+      result = JSON.parse(response.body, symbolize_names: true)
+      binding.pry
+    
+    
     end
 
 
-
-
-
-  end 
+  end
 
 end
