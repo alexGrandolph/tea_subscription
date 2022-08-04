@@ -75,7 +75,16 @@ RSpec.describe 'Subscribe User Endpoint' do
       expect(response).to be_successful
       
       result = JSON.parse(response.body, symbolize_names: true)
-      binding.pry
+      expect(result).to have_key(:data)
+      expect(result[:data]).to be_a Hash
+      
+      data = result[:data]
+      expect(data).to have_key(:type)
+      expect(data[:type]).to eq("Error")
+
+      expect(result[:data]).to have_key(:attributes)
+      expect(result[:data][:attributes]).to have_key(:message)
+      expect(result[:data][:attributes][:message]).to eq("Missing parameters to create a subscription")
     
     
     end
