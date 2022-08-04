@@ -14,7 +14,7 @@ class Api::V1::Customers::SubscriptionsController < ApplicationController
       render json: SubscriptionSerializer.new(subscription), status: 201
     else
       render json: ErrorSerializer.bad_subscription
-      binding.pry
+      # binding.pry
     end
 
   end 

@@ -73,7 +73,7 @@ RSpec.describe 'Subscribe User Endpoint' do
    
       post '/api/v1/subscribe', headers: headers, params: JSON.generate(payload)
       expect(response).to be_successful
-      expect(response.status).to eq 201
+      
       result = JSON.parse(response.body, symbolize_names: true)
       binding.pry
     
