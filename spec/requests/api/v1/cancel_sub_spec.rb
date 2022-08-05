@@ -31,6 +31,7 @@ RSpec.describe 'Cancel Customer Subscription Endpoint' do
   end
 
   describe 'Sad Path' do
+    
     it 'Bad Subscription ID returns error' do
       customer1 = Customer.create!(first_name: 'John', last_name: 'Brisket', email: 'john@example.com', address: '123 Fake Street')
       tea1 = Tea.create!(title: 'Some Tea', description: 'A tasty tea for sure', temp: 55, brewtime: '5')
