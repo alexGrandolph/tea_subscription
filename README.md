@@ -66,7 +66,7 @@ Response
 Example Request
 
 ```
-  POST /api/v1/subscriptions/cancel
+  PATCH /api/v1/subscriptions/cancel
   Content-Type: application/json
   Accept: application/json
   
