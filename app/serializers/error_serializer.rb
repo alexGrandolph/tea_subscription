@@ -6,7 +6,7 @@ class ErrorSerializer
         "type": "Error",
         "id": "nil",
         "attributes": {
-          "message": "Missing parameters to create a subscription"
+          "message": "Missing or bad parameters to create a subscription"
         }
       }
    }

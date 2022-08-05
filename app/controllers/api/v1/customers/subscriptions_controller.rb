@@ -20,7 +20,7 @@ class Api::V1::Customers::SubscriptionsController < ApplicationController
       else
         render json: ErrorSerializer.bad_subscription
       end
-    rescue ActiveRecord::RecordNotFound
+    rescue ActiveRecord::RecordNotFound 
       render json: ErrorSerializer.bad_subscription
     end
   end 
