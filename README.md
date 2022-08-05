@@ -10,7 +10,7 @@ This Rails API offers three RESTful endpoints to a prospective front end, design
 To set up this repository on your local machine, please make sure you have Ruby version 2.7.4 and Rails 5.2.8 downloaded locally.  Next clone this repository to your local machine.  CD into the directory and run ` bundle install ` to install all gems and dependencies.  To launch a local server to ping the available endpoints via Postman or another API tool, enter `rails s` in your CLI. 
 
 <h3>Testing Instructions</h3>
-This project uses RSpec (rspec-rails gem) for its test suite, and SimpleCov for coverage.  This project has 99% test coverage.
+This project uses RSpec (rspec-rails gem) for its test suite, and SimpleCov for coverage.  This project has 100% test coverage.  Each end point has sad path testing, with error handling in my controllers for missing and/or bad parameters for each request.  
 <br>
 To run the test suite yourself, simply run `bundle exec rspec` in your CLI.
 <br>
@@ -112,5 +112,6 @@ Example Request
 
 ![Screen Shot 2022-08-03 at 10 53 47 AM](https://user-images.githubusercontent.com/96802470/182665966-406c5cd8-1960-4bce-bcef-5c9e4b9cbd72.png)
 
+
 <h3>Reflections</h3>
-As always, I really enjoy working with API's.  Given more time I would love to create sign up and login in endpoints, and add a password_digest column to the customers table.  I would also like to consume the TeaApi to fetch tea information and add a Tea's Index endpoint as well as a Tea Show endpoint.  I think creating a front end for this API would be a fun challenge for sharpening my front end skills. 
+As always, I really enjoy working with API's.  Given more time I would love to create sign up and login in endpoints, and add a password_digest column to the customers table.  I would also like to consume the TeaApi to fetch tea information and add a Tea's Index endpoint as well as a Tea Show endpoint.  I think creating a front end for this API would be a fun challenge for sharpening my front end skills.  Error handling could always be improved/optimized and I think moving some error logic to a Error module would be effective.  
