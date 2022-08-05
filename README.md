@@ -2,16 +2,27 @@
 
 
 <h3>Summary</h3>
+ 
 This Rails API offers three RESTful endpoints to a prospective front end, designed to allow a customer/user to sign up for a new tea subscription, cancel a tea subscription, and return all of a customers subscriptions regardless of status (active or cancelled).  The endpoints utilize easy to use and intuitive parameters, and only requires what is necessary without any bloat.
 
 <h3>Set Up Instructions</h3>
-<div align="left">
-To set up this repository on your local machine, please make sure you have Ruby version 2.7.4 and Rails 5.2.8 downloaded locally.  Next clone this repository to your local machine.  CD into the directory and run `bundle install` to install all gems and dependencies.  To launch a local server to ping the available endpoints via Postman or another API tool, enter `rails s` in your CLI. 
-<h4>Testing Instructins</h4>
+
+To set up this repository on your local machine, please make sure you have Ruby version 2.7.4 and Rails 5.2.8 downloaded locally.  Next clone this repository to your local machine.  CD into the directory and run ` bundle install ` to install all gems and dependencies.  To launch a local server to ping the available endpoints via Postman or another API tool, enter `rails s` in your CLI. 
+
+<h3>Testing Instructions</h3>
 This project uses RSpec (rspec-rails gem) for its test suite, and SimpleCov for coverage.  This project has 99% test coverage.
 <br>
 To run the test suite yourself, simply run `bundle exec rspec` in your CLI.
-</div>
+<br>
+If you would like to import the Postman collection follow this link https://www.getpostman.com/collections/3c7451038bf1026e3a11
+
+<h3>Database / Schema </h3>
+I made the decision to make subscriptions the joins table between customers and teas.  I used the tea title and the frequency to create the title for the description.  I thought this would make things less complicated but if the decision was made to have pre-determined subscriptions for all teas in our database, creating a tea_subscription table would be a quick and painless change.  
+<br>
+![tea subscription schema](https://user-images.githubusercontent.com/96802470/182981845-5f4e96bb-6a3e-402e-a5b4-d2860b09807a.png)
+
+
+
 <h3>Available Endpoints</h3>
 
 
