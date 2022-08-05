@@ -17,9 +17,7 @@ To run the test suite yourself, simply run `bundle exec rspec` in your CLI.
 If you would like to import the Postman collection follow this link https://www.getpostman.com/collections/3c7451038bf1026e3a11
 
 <h3>Database / Schema </h3>
-I made the decision to make subscriptions the joins table between customers and teas.  I used the tea title and the frequency to create the title for the description.  I thought this would make things less complicated but if the decision was made to have pre-determined subscriptions for all teas in our database, creating a tea_subscription table would be a quick and painless change.  
-<br>
-![tea subscription schema](https://user-images.githubusercontent.com/96802470/182981845-5f4e96bb-6a3e-402e-a5b4-d2860b09807a.png)
+![tea subscription schema](https://user-images.githubusercontent.com/96802470/182982346-b26c49ed-9b8a-4a44-a1d8-693691aa653b.png)
 
 
 
