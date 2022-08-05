@@ -112,3 +112,5 @@ Example Request
 
 ![Screen Shot 2022-08-03 at 10 53 47 AM](https://user-images.githubusercontent.com/96802470/182665966-406c5cd8-1960-4bce-bcef-5c9e4b9cbd72.png)
 
+<h3>Reflections</h3>
+As always, I really enjoy working with API's.  Given more time I would love to create sign up and login in endpoints, and add a password_digest column to the customers table.  I would also like to consume the TeaApi to fetch tea information and add a Tea's Index endpoint as well as a Tea Show endpoint.  I think creating a front end for this API would be a fun challenge for sharpening my front end skills. 
