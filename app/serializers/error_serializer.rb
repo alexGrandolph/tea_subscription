@@ -36,4 +36,16 @@ class ErrorSerializer
    }
   end
 
+  def self.bad_customer_id
+   {
+      "data": {
+        "type": "Error",
+        "id": "nil",
+        "attributes": {
+          "message": "Please provide a valid Customer ID"
+        }
+      }
+   }
+  end
+
 end
