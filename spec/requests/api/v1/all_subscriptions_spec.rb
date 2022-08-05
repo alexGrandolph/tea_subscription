@@ -40,8 +40,36 @@ RSpec.describe 'Get All Customer Subscriptions Endpoint' do
       expect(subscriptions.count).to eq(3)
 
     end
-
-
   end
+
+  describe 'Sad Path' do
+    it 'Bad customer ID returns an error' do
+      customer1 = Customer.create!(first_name: 'John', last_name: 'Brisket', email: 'john@example.com', address: '123 Fake Street')
+      tea1 = Tea.create!(title: 'Earl Grey', description: 'A tasty tea for sure', temp: 55, brewtime: '5')
+      tea2 = Tea.create!(title: 'Green Tea', description: 'A Tea that is green', temp: 40, brewtime: '2')
+      tea3 = Tea.create!(title: 'Hibiscus', description: 'probably the best tea', temp: 88, brewtime: '7')
+      subscription1 = Subscription.create!(title: 'Monthly Early Grey', price: 49.98, status: 0, frequency: 1, customer_id: customer1.id, tea_id: tea1.id)
+      subscription2 = Subscription.create!(title: 'Monthly Green Tea', price: 49.98, status: 1, frequency: 1, customer_id: customer1.id, tea_id: tea2.id)
+      subscription3 = Subscription.create!(title: 'Weekly Hibiscus', price: 49.98, status: 1, frequency: 0, customer_id: customer1.id, tea_id: tea3.id)
+
+      get '/api/v1/customer/subscriptions', headers: headers, params:{ customer_id: 8486 }
+      expect(response).to be_successful
+
+      result = JSON.parse(response.body, symbolize_names: true)
+      expect(result).to have_key(:data)
+      expect(result[:data]).to be_a Hash
+      
+      data = result[:data]
+      expect(data).to have_key(:type)
+      expect(data[:type]).to eq("Error")
+
+      expect(result[:data]).to have_key(:attributes)
+      expect(result[:data][:attributes]).to have_key(:message)
+      expect(result[:data][:attributes][:message]).to eq("Please provide a valid Customer ID")
+
+    end 
+
+
+  end 
 
 end
