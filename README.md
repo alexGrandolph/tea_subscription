@@ -18,7 +18,7 @@ If you would like to import the Postman collection follow this link https://www.
 
 <h3>Database / Schema </h3>
 ![tea subscription schema](https://user-images.githubusercontent.com/96802470/182982346-b26c49ed-9b8a-4a44-a1d8-693691aa653b.png)
-
+ <img width="1216" alt="Screen Shot 2022-06-25 at 3 20 12 PM" src="(https://user-images.githubusercontent.com/96802470/182982346-b26c49ed-9b8a-4a44-a1d8-693691aa653b.png">
 
 
 <h3>Available Endpoints</h3>
